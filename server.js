@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-var bcrypt = require('bcrypt');
+var bcrypt = require('bcrypt-nodejs');
 var cors = require('cors');
 var knex = require('knex');
 
@@ -12,10 +12,10 @@ const image = require('./controllers/image');
 const db = knex({
     client: 'pg',
     connection: {
-      host : '127.0.0.1',
-      user : 'cody',
-      password : '',
-      database : 'smart-brain'
+      host : process.env.POSTGRES_HOST,
+      user : process.env.POSTGRES_USER,
+      password : process.env.POSTGRES_PASSWORD,
+      database : process.env.POSTGRES_DB
     }
   });
 
